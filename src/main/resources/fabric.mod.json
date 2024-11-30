@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "tightfire",
+  "version": "${version}",
+
+  "name": "Tightfire",
+  "description": "Makes fire render tighter against blocks like slabs and fences",
+  "authors": [
+    "AmyMialee",
+    "8onfire"
+  ],
+  "contact": {
+    "email": "tightfire@amymialee.xyz",
+    "homepage": "https://amymialee.xyz",
+    "irc": "",
+    "sources": "https://github.com/AmyMialeeMods/tightfire",
+    "issues": "https://github.com/AmyMialeeMods/tightfire/issues"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/tightfire/icon.png",
+
+  "environment": "client",
+  "accessWidener": "tightfire.accesswidener",
+  "mixins": [
+    "tightfire.mixins.json"
+  ],
+
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.curseforge": "https://www.curseforge.com/minecraft/mc-mods/tightfire",
+        "modmenu.discord": "https://discord.amymialee.xyz",
+        "modmenu.kofi": "https://ko-fi.com/amymialee",
+        "modmenu.modrinth": "https://modrinth.com/project/tightfire",
+        "modmenu.twitter": "https://x.com/amy_mialee",
+        "modmenu.wiki": "https://modrinth.com/project/tightfire"
+      },
+      "update_checker": true
+    }
+  }
+}

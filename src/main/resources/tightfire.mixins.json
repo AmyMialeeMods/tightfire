@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "xyz.amymialee.tightfire.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "BlocksMixin",
+    "FireBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
