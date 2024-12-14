@@ -38,8 +38,8 @@ publishMods {
         }
         announcementTitle = "Download from CurseForge"
         javaVersions.addAll(JavaVersion.VERSION_21, JavaVersion.VERSION_22)
-        clientRequired = true;
-        serverRequired = true;
+        clientRequired = true
+        serverRequired = false
         projectSlug = curseforge_slug
     }
     modrinth {
@@ -52,13 +52,13 @@ publishMods {
         }
         announcementTitle = "Download from Modrinth"
     }
-//    discord {
-//        webhookUrl = providers.gradleProperty("discord_webhook")
-//        dryRunWebhookUrl = providers.gradleProperty("discord_webhook")
-//        username = "Abee"
-//        avatarUrl = "https://cdn.discordapp.com/emojis/1006355140657299528.gif?quality=lossless"
-//        setPlatforms(publishMods.platforms.modrinth, publishMods.platforms.curseforge)
-//    }
+    discord {
+        webhookUrl = providers.gradleProperty("discord_webhook")
+        dryRunWebhookUrl = providers.gradleProperty("discord_webhook")
+        username = "Abee"
+        avatarUrl = "https://cdn.discordapp.com/emojis/1006355140657299528.gif?quality=lossless"
+        setPlatforms(publishMods.platforms.modrinth, publishMods.platforms.curseforge)
+    }
 }
 
 processResources {
