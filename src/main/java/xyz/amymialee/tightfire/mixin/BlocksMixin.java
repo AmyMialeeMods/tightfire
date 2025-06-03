@@ -11,7 +11,7 @@ import xyz.amymialee.tightfire.TightFire;
 
 @Mixin(Blocks.class)
 public class BlocksMixin {
-    @WrapOperation(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/AbstractBlock$Settings;create()Lnet/minecraft/block/AbstractBlock$Settings;", ordinal = 127))
+    @WrapOperation(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/AbstractBlock$Settings;create()Lnet/minecraft/block/AbstractBlock$Settings;", ordinal = 130))
     private static AbstractBlock.@NotNull Settings tightfire$fireoffsetter(@NotNull Operation<AbstractBlock.Settings> original) {
         return TightFire.setSettings(original.call());
     }
