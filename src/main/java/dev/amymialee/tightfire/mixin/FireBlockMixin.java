@@ -1,4 +1,4 @@
-package xyz.amymialee.tightfire.mixin;
+package dev.amymialee.tightfire.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
@@ -9,7 +9,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
-import xyz.amymialee.tightfire.TightFire;
+import dev.amymialee.tightfire.TightFire;
 
 @Mixin(FireBlock.class)
 public class FireBlockMixin {

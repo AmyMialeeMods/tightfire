@@ -1,4 +1,4 @@
-package xyz.amymialee.tightfire;
+package dev.amymialee.tightfire;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
@@ -7,7 +7,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
