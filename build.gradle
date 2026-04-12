@@ -1,29 +1,22 @@
 plugins {
-    id 'fabric-loom' version '1.14-SNAPSHOT'
-    id 'maven-publish'
-    id "me.modmuss50.mod-publish-plugin" version "0.8.4"
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+    id "me.modmuss50.mod-publish-plugin" version "1.1.0"
 }
 
 version = project.mod_version
 group = project.maven_group
 
 base {
-    archivesName = project.archives_base_name + "-" + project.minecraft_version
+    archivesName = project.mod_id + "-" + project.minecraft_version
 }
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-}
-
-loom {
-    accessWidenerPath = file("src/main/resources/tightfire.accesswidener")
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
 }
 
 publishMods {
-    file = remapJar.archiveFile
-    additionalFiles.files.add(remapSourcesJar.archiveFile.get().getAsFile())
+    file = jar.archiveFile
     displayName = "${project.version.toString().split("\\+")[0]} for Fabric $minecraft_version"
     changelog = ""
     type = STABLE
@@ -37,7 +30,7 @@ publishMods {
             end = minecraft_version
         }
         announcementTitle = "Download from CurseForge"
-        javaVersions.addAll(JavaVersion.VERSION_21, JavaVersion.VERSION_22)
+        javaVersions.addAll(JavaVersion.VERSION_25)
         clientRequired = true
         serverRequired = false
         projectSlug = curseforge_slug
@@ -56,10 +49,14 @@ publishMods {
         webhookUrl = providers.gradleProperty("discord_webhook")
         dryRunWebhookUrl = providers.gradleProperty("discord_webhook")
         username = "Abee"
-        content = "New version of ${project.archives_base_name} released for Fabric $minecraft_version!"
+        content = "New version of ${project.mod_id} released for Fabric $minecraft_version!"
         avatarUrl = "https://cdn.discordapp.com/emojis/1006355140657299528.gif?quality=lossless"
         setPlatforms(publishMods.platforms.modrinth, publishMods.platforms.curseforge)
     }
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/tightfire.accesswidener")
 }
 
 processResources {
@@ -73,16 +70,16 @@ processResources {
 
 tasks.withType(JavaCompile).configureEach {
     it.options.encoding = "UTF-8"
-    it.options.release.set(21)
+    it.options.release.set(25)
 }
 
 java {
-    toolchain.languageVersion = JavaLanguageVersion.of(21)
+    toolchain.languageVersion = JavaLanguageVersion.of(25)
     withSourcesJar()
 }
 
 jar {
     from("LICENSE.md") {
-        rename { "${it}_${project.archives_base_name}" }
+        rename { "${it}_${project.mod_id}" }
     }
 }
