@@ -21,6 +21,9 @@
 
   "environment": "client",
   "accessWidener": "tightfire.accesswidener",
+  "entrypoints": {
+    "client": ["dev.amymialee.tightfire.TightFireClient"]
+  },
   "mixins": [
     "tightfire.mixins.json"
   ],

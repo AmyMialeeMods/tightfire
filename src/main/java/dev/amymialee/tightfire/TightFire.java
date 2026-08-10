@@ -1,9 +1,7 @@
 package dev.amymialee.tightfire;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.PipeBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -49,22 +47,5 @@ public class TightFire {
             dir = Direction.UP;
         }
         return dir;
-    }
-
-    public static BlockBehaviour.@NotNull OffsetFunction createOffsetter() {
-        return (state, pos) -> {
-            var direction = getDirection(state);
-            if (direction == null) return Vec3.ZERO;
-            var world = Minecraft.getInstance().level;
-            if (world == null) return Vec3.ZERO;
-            var sidePos = pos.relative(direction);
-            var outline = world.getBlockState(sidePos).getShape(world, sidePos);
-            return getOffset(direction, outline);
-        };
-    }
-
-    public static BlockBehaviour.@NotNull Properties setSettings(BlockBehaviour.@NotNull Properties original) {
-        original.offsetFunction = createOffsetter();
-        return original;
     }
 }
