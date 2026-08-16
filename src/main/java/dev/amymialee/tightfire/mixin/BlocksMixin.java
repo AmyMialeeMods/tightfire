@@ -5,13 +5,15 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.jetbrains.annotations.NotNull;
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import dev.amymialee.tightfire.TightFire;
+import org.spongepowered.asm.mixin.injection.Slice;
 
 @Mixin(Blocks.class)
 public class BlocksMixin {
-    @WrapOperation(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;of()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;", ordinal = 127))
+    @WrapOperation(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;of()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;", ordinal = 0), slice = @Slice(from = @At(value = "FIELD", target = "Lnet/minecraft/references/BlockIds;FIRE:Lnet/minecraft/resources/ResourceKey;", opcode = Opcodes.GETSTATIC)))
     private static BlockBehaviour.@NotNull Properties tightfire$fireoffsetter(@NotNull Operation<BlockBehaviour.Properties> original) {
         return TightFire.setSettings(original.call());
     }
